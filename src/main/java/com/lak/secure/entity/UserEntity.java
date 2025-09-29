@@ -1,5 +1,6 @@
 package com.lak.secure.entity;
 
+import com.lak.secure.enums.UserRole;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -15,10 +16,11 @@ public class UserEntity {
     @Id
     private String id;
 
-    public UserEntity(String name, String username, String password) {
+    public UserEntity(String name, String username, String password, UserRole userRole ) {
         this.name = name;
         this.username = username;
         this.password = password;
+        this.userRole = userRole;
     }
 
     private String name;
@@ -26,5 +28,7 @@ public class UserEntity {
     @Indexed(unique = true)
     private String username;
     private String password;
+
+    private UserRole userRole;
 
 }
